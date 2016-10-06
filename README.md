@@ -13,10 +13,6 @@ With more and more android phones running on lollipop (API level 21+), it become
 ## Proof of concept
 To be uploaded
 
-[Watch Youtube video of demo](https://www.youtube.com/watch?v=1MKqg0UzTKo)
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/l_FL0Le_mCw/0.jpg)](https://www.youtube.com/watch?v=l_FL0Le_mCw)
-
 #### Author
 **Hitesh Sahu**
 
