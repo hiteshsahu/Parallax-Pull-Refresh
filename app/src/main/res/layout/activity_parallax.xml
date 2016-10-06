@@ -1,87 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/root"
+    android:id="@+id/demo_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
     android:fitsSystemWindows="true">
 
-    <com.hitesh.parallaxrefresh.widget.parallax.ParallaxNestedScrollView
-        android:id="@+id/parallax_header"
+    <com.hitesh.parallaxrefresh.widget.refreshwidget.ParallxRefreshWidget
+        android:id="@+id/parallex_refresh_widget"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#000"
-        android:fillViewport="true"
-        app:inner_parallax_factor="1.9"
-        app:parallax_factor="1.9"
-        app:parallax_views_num="3">
+        android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:id="@+id/parallax_layer_holder"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/parallax_layer_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:gravity="center"
-                android:scaleType="centerCrop" />
-
-            <ImageView
-                android:id="@+id/parallax_layer_intermediate"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="-200dp"
-                android:gravity="bottom"
-                android:scaleType="centerCrop" />
-
-            <ImageView
-                android:id="@+id/parallax_layer_top"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_gravity="bottom|right"
-                android:layout_marginEnd="25dp"
-                android:layout_marginTop="-150dp"
-                android:gravity="bottom" />
-
-            <android.support.design.widget.CoordinatorLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/demo_recycle_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/white"
-                    android:padding="5dp"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-            </android.support.design.widget.CoordinatorLayout>
-
-        </LinearLayout>
-    </com.hitesh.parallaxrefresh.widget.parallax.ParallaxNestedScrollView>
-
-    <!--Fab without icon will act as placeholder-->
-    <android.support.design.widget.FloatingActionButton
+    <TextView
+        android:id="@+id/fork_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@id/demo_recycle_view"
-        app:layout_anchorGravity="top|left" />
-
-
-    <!--Drone placed just above fab to animate-->
-    <ImageView
-        android:id="@+id/drone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:background="@android:drawable/ic_menu_send"
-        app:layout_anchor="@id/demo_recycle_view"
-        app:layout_anchorGravity="top|left"></ImageView>
+        android:layout_gravity="bottom|left"
+        android:layout_margin="5dp"
+        android:gravity="bottom|left"
+        android:text="Fork Me on Github"
+        android:textAllCaps="true"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </android.support.design.widget.CoordinatorLayout>

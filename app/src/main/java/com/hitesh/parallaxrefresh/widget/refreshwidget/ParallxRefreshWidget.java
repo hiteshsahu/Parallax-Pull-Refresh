@@ -1,16 +1,16 @@
-package com.hiteshsahu.parallaxpullrefreshconcept.view.demo;
+package com.hitesh.parallaxrefresh.widget.refreshwidget;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.graphics.Path;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -26,16 +26,15 @@ import com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollState;
 import com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollStateListener;
 import com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollUpdateListener;
 import com.hiteshsahu.parallaxpullrefreshconcept.R;
-import com.hiteshsahu.parallaxpullrefreshconcept.data.TestDataProvider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ParallaxActivity extends AppCompatActivity {
+public class ParallxRefreshWidget extends CoordinatorLayout {
 
     private static final double HORIZONTAL_DISPLACEMENT = 1000.0;
-    private static final double VERTICAL_DISPLACEMNT = 150.0;
-    private static final int TRAJECTORY_DURATION = 2000;//2000;
+    private static final double VERTICAL_DISPLACEMENT = 150.0;
+    private static final int TRAJECTORY_DURATION = 2000;
     @BindView(R.id.parallax_header)
     ParallaxNestedScrollView parallaxedPullRefreshView;
     @BindView(R.id.root)
@@ -50,24 +49,85 @@ public class ParallaxActivity extends AppCompatActivity {
     //ImageView drone
     @BindView(R.id.drone)
     ImageView drone;
-    //Recyclerview for demo
+    //Recyclerview
     @BindView(R.id.demo_recycle_view)
     RecyclerView recycler;
-    private String TAG = ParallaxActivity.class.getSimpleName();
+    private int[] defaultBackground = new int[3];
+    private String TAG = ParallxRefreshWidget.class.getSimpleName();
     private int currentGfCount = 0;
     private GlideDrawableImageViewTarget imageViewTarget;
     private int[] droneLaunchCoordinates = new int[2];
 
+    public ParallxRefreshWidget(Context context) {
+        super(context);
+        init(context);
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parallax);
+
+    public ParallxRefreshWidget(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+    public ParallxRefreshWidget(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context);
+    }
+
+    /**
+     * Fill nay type of data you want here
+     *
+     * @return
+     */
+    public RecyclerView getRecycler() {
+        return recycler;
+    }
+
+    /**
+     * use this method to change background of first layer
+     * or use @updateFirstLayer method
+     *
+     * @return
+     */
+    public ImageView getParallaxLayer1() {
+        return parallaxLayer1;
+    }
+
+    /**
+     * use this method to change background of second layer
+     * or use @updateSecondLayer method
+     *
+     * @return
+     */
+    public ImageView getParallaxLayer2() {
+        return parallaxLayer2;
+    }
+
+    /**
+     * use this method to change background of third layer
+     * or use @updateThirdLayer method
+     *
+     * @return
+     */
+    public ImageView getParallaxLayer3() {
+        return parallaxLayer3;
+    }
+
+    /**
+     * Add any event on drone
+     *
+     * @return
+     */
+    public ImageView getDrone() {
+        return drone;
+    }
+
+    public GlideDrawableImageViewTarget getGifTarget() {
+        return imageViewTarget;
+    }
+
+    protected void init(Context context) {
+        LayoutInflater.from(context).inflate(R.layout.parallax_refresh_layout, this, true);
         ButterKnife.bind(this);
-
-        //This app uses images from internet to avoid huge apk size and souce size
-        Snackbar.make(parentViewGroup, "This App Download and Cache Images from INTERNET Consider turning WIFI On for better experience", Snackbar.LENGTH_LONG)
-                .setAction("OK", null).show();
 
         // set a global layout listener which will be called when the layout pass is completed and the view is drawn
         parentViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(
@@ -79,23 +139,14 @@ public class ParallaxActivity extends AppCompatActivity {
                         } else {
                             parentViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                         }
-
                         // find drone coordinates
                         drone.getLocationOnScreen(droneLaunchCoordinates);
                     }
                 }
         );
 
-        //fill data for app
-        TestDataProvider.getInstance().generateTestData();
-
         //you can use Gifs on first layer of parallax it looks awesome
         imageViewTarget = new GlideDrawableImageViewTarget(parallaxLayer1);
-
-        //add images on parallax layers
-        Glide.with(getApplicationContext()).load(R.drawable.night_sky).into(parallaxLayer1);
-        Glide.with(getApplicationContext()).load(R.drawable.back_mountain_transparent_bg).into(parallaxLayer2);
-        Glide.with(getApplicationContext()).load(R.drawable.coconut).into(parallaxLayer3);
 
         // Apply over-scroll in 'overshoot mode'  for nested scrollview
         IOverScrollDecor overScrollDecor = new VerticalOverScrollBounceEffectDecorator(new NestedScrollViewOverScrollDecorAdapter(parallaxedPullRefreshView),
@@ -147,7 +198,7 @@ public class ParallaxActivity extends AppCompatActivity {
                         // Dragging stopped -- view is starting to bounce back from the *left-end* onto natural position.
                         if (oldState == IOverScrollState.STATE_DRAG_START_SIDE) {
 
-                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                 shootDrone(drone);
                             } else {
                                 shootDronePreLollipop();
@@ -162,67 +213,63 @@ public class ParallaxActivity extends AppCompatActivity {
             }
         });
 
-        //change background of parallax layer 1
-        drone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
 
-                if (currentGfCount == 0) {
-                    Glide.with(getApplicationContext()).load(R.raw.sky_animated).into(imageViewTarget);
-                    currentGfCount++;
+    /**
+     * Call this method to initialize layers with default values
+     *
+     * @param layer1Resource
+     * @param layer2Resource
+     * @param layer3Resource
+     */
+    public void initializeLayers(int layer1Resource, int layer2Resource, int layer3Resource) {
+        //add images on parallax layers
+        Glide.with(getContext()).load(layer1Resource).into(parallaxLayer1);
+        Glide.with(getContext()).load(layer2Resource).into(parallaxLayer2);
+        Glide.with(getContext()).load(layer3Resource).into(parallaxLayer3);
 
-                    Snackbar.make(view, "Cloudy Night", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                } else if (currentGfCount == 1) {
-                    Glide.with(getApplicationContext()).load(R.raw.sky_animated_2).into(imageViewTarget);
-                    currentGfCount++;
+        defaultBackground[0] = layer1Resource;
+        defaultBackground[1] = layer2Resource;
+        defaultBackground[2] = layer3Resource;
 
-                    Snackbar.make(view, "Night Time", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                } else if (currentGfCount == 2) {
-                    Glide.with(getApplicationContext()).load(R.raw.mornig_sky).into(imageViewTarget);
-                    currentGfCount = 0;
+    }
 
-                    Snackbar.make(view, "Morning Time", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            }
-        });
+    public void updateFirstLayer(String firstLayerUrl) {
+        if (null != firstLayerUrl)
+            Glide.with(getContext())
+                    .load(firstLayerUrl)
+                    .placeholder(defaultBackground[0])
+                    .into(parallaxLayer1);
 
-        //setup recycle view
-        recycler.setHasFixedSize(false);
-        recycler.setNestedScrollingEnabled(false);
-        recycler.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        TestDataAdapter rcAdapter = new TestDataAdapter();
-        recycler.setAdapter(rcAdapter);
-        rcAdapter.setOnCardClickListner(new TestDataAdapter.OnCardClickListner() {
-            @Override
-            public void OnCardClicked(View view, int position) {
+    }
 
-                if (position <= 9) {
+    public void updateSecondLayer(String secondLayerUrl) {
+        if (null != secondLayerUrl)
+            Glide.with(getContext())
+                    .load(secondLayerUrl)
+                    .placeholder(defaultBackground[1])
+                    .into(parallaxLayer2);
 
-                    //first 9 items are skys images , update sky layer
-                    Glide.with(getApplicationContext())
-                            .load(TestDataProvider.testImageUrls[position])
-                            .placeholder(R.drawable.night_sky)
-                            .into(parallaxLayer1);
+    }
 
-                } else if (position > 9 && position < 13) {
+    public void updateThirdLayer(String thirdLayerUrl) {
+        if (null != thirdLayerUrl)
+            Glide.with(getContext())
+                    .load(thirdLayerUrl)
+                    .placeholder(defaultBackground[2])
+                    .into(parallaxLayer3);
 
-                    //next3 items are trees , update tree layer
-                    Glide.with(getApplicationContext())
-                            .load(TestDataProvider.testImageUrls[position])
-                            .placeholder(R.drawable.coconut)
-                            .into(parallaxLayer3);
-                } else {
-                    //other items are mountains , update mountain layer
-                    Glide.with(getApplicationContext())
-                            .load(TestDataProvider.testImageUrls[position])
-                            .placeholder(R.drawable.back_mountain_transparent_bg)
-                            .into(parallaxLayer2);
-                }
-            }
-        });
+    }
+
+    public void updateAllLayers(String firstLayerUrl,
+                                String secondLayerUrl,
+                                String thirdLayerUrl) {
+
+        updateFirstLayer(firstLayerUrl);
+
+        updateThirdLayer(thirdLayerUrl);
+
+        updateSecondLayer(secondLayerUrl);
     }
 
     /**
@@ -273,10 +320,10 @@ public class ParallaxActivity extends AppCompatActivity {
 
                 //increase height till half the trajectory
                 if (value < .5) {
-                    drone.setTranslationY((float) (VERTICAL_DISPLACEMNT * Math.cos(value)));
+                    drone.setTranslationY((float) (VERTICAL_DISPLACEMENT * Math.cos(value)));
                 } else {
                     //decrase for rest
-                    drone.setTranslationY((float) ((VERTICAL_DISPLACEMNT - 150.0 * value) * Math.cos(value)));
+                    drone.setTranslationY((float) ((VERTICAL_DISPLACEMENT - 150.0 * value) * Math.cos(value)));
                 }
             }
         });
