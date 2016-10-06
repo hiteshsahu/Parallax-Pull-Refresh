@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/parent"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
@@ -18,19 +18,20 @@
         app:parallax_views_num="3">
 
         <LinearLayout
+            android:id="@+id/parallax_layer_holder"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/sky_bg"
+                android:id="@+id/parallax_layer_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:gravity="center"
                 android:scaleType="centerCrop" />
 
             <ImageView
-                android:id="@+id/mountain_bg"
+                android:id="@+id/parallax_layer_intermediate"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="bottom"
@@ -39,7 +40,7 @@
                 android:scaleType="centerCrop" />
 
             <ImageView
-                android:id="@+id/coconut_bg"
+                android:id="@+id/parallax_layer_top"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
                 android:layout_gravity="bottom|right"
@@ -52,7 +53,7 @@
                 android:layout_height="wrap_content">
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/testData"
+                    android:id="@+id/demo_recycle_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/white"
@@ -69,22 +70,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@id/testData"
+        app:layout_anchor="@id/demo_recycle_view"
         app:layout_anchorGravity="top|left" />
 
-    <!--Fab with icon but transparent bg will animate-->
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+
+    <!--Drone placed just above fab to animate-->
+    <ImageView
+        android:id="@+id/drone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        android:background="@android:color/transparent"
-        android:src="@android:drawable/ic_menu_send"
-        app:backgroundTint="@android:color/transparent"
-        app:borderWidth="0dp"
-        app:fabSize="normal"
-        app:layout_anchor="@id/testData"
-        app:layout_anchorGravity="top|left" />
-
+        android:background="@android:drawable/ic_menu_send"
+        app:layout_anchor="@id/demo_recycle_view"
+        app:layout_anchorGravity="top|left"></ImageView>
 
 </android.support.design.widget.CoordinatorLayout>
