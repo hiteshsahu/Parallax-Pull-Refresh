@@ -1,4 +1,4 @@
-package com.hiteshsahu.parallaxpullrefreshconcept;
+package com.hiteshsahu.parallaxpullrefreshconcept.view.demo;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -19,26 +19,24 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-import com.hiteshsahu.parallaxpullrefreshconcept.data.CenterRepository;
-import com.hiteshsahu.parallaxpullrefreshconcept.data.TestDataModel;
-import com.nirhart.parallaxscroll.views.ParallaxNestedScrollView;
+import com.hitesh.parallaxrefresh.widget.parallax.ParallaxNestedScrollView;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollDecor;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollState;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollStateListener;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollUpdateListener;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.VerticalOverScrollBounceEffectDecorator;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.adapters.NestedScrollViewOverScrollDecorAdapter;
+import com.hiteshsahu.parallaxpullrefreshconcept.R;
+import com.hiteshsahu.parallaxpullrefreshconcept.data.TestDataProvider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.everything.android.ui.overscroll.IOverScrollDecor;
-import me.everything.android.ui.overscroll.IOverScrollState;
-import me.everything.android.ui.overscroll.IOverScrollStateListener;
-import me.everything.android.ui.overscroll.IOverScrollUpdateListener;
-import me.everything.android.ui.overscroll.VerticalOverScrollBounceEffectDecorator;
-import me.everything.android.ui.overscroll.adapters.NestedScrollViewOverScrollDecorAdapter;
 
 public class ParallaxActivity extends AppCompatActivity {
 
     private static final double HORIZONTAL_DISPLACEMENT = 1000.0;
     private static final double VERTICAL_DISPLACEMNT = 150.0;
     private static final int TRAJECTORY_DURATION = 2000;//2000;
-    private String TAG = ParallaxActivity.class.getSimpleName();
-
     @BindView(R.id.parallax_header)
     ParallaxNestedScrollView scrollView;
     @BindView(R.id.mountain_bg)
@@ -54,10 +52,32 @@ public class ParallaxActivity extends AppCompatActivity {
     @BindView(R.id.parent)
     ViewGroup parentViewGroup;
     int[] img_coordinates = new int[2];
-
+    private String TAG = ParallaxActivity.class.getSimpleName();
     private int currentGfCount = 0;
     private GlideDrawableImageViewTarget imageViewTarget;
-
+    private String[] urls = {
+            //Add Sky
+            "http://wallpapercave.com/wp/0e12dgE.png",
+            "http://wallpapercave.com/wp/3I32MKI.jpg",
+            "http://wallpapercave.com/wp/251fACI.jpg",
+            "http://wallpapercave.com/wp/kKsNXp9.jpg",
+            "http://wallpapercave.com/wp/jGNTLTN.jpg",
+            "http://wallpapercave.com/wp/HfzLYZY.jpg",
+            "http://wallpapercave.com/wp/2l8fNqv.jpg",
+            "http://wallpapercave.com/wp/gF9n5Lk.jpg",
+            "http://wallpapercave.com/wp/cRHOcKE.jpg",
+            "http://wallpapercave.com/wp/KBk1YBX.jpg",
+            //Tree
+            "http://img03.deviantart.net/7245/i/2013/134/3/c/tree_2__png_with_transparency__by_bupaje-d65amxg.png",
+            "http://img04.deviantart.net/95e3/i/2013/136/e/a/tree_3__png_with_transparency__by_bupaje-d65gvf3.png",
+            "http://img07.deviantart.net/38e2/i/2013/135/b/2/tree_1__png_with_transparency__by_bupaje-d65ctod.png",
+            //Hills
+            "http://www.pngall.com/wp-content/uploads/2016/06/Mountain-PNG-Picture.png",
+            "http://www.pngall.com/wp-content/uploads/2016/06/Mountain-PNG-File.png",
+            "http://david-freed.com/wp-content/uploads/2014/04/Slider-Mountain-1440-wide-1.png",
+            "http://pre02.deviantart.net/0627/th/pre/f/2013/218/c/8/mountain_landscape_by_regus_ttef-d602k3h.png",
+            "http://www.pngall.com/wp-content/uploads/2016/06/Mountain-PNG-Image-180x180.png"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +106,7 @@ public class ParallaxActivity extends AppCompatActivity {
                 }
         );
 
-        generateTestData();
+        TestDataProvider.getInstance().generateTestData();
 
         // Apply over-scroll in 'overshoot mode' - i.e. using the helper.
         IOverScrollDecor decor = new VerticalOverScrollBounceEffectDecorator(new NestedScrollViewOverScrollDecorAdapter(scrollView),
@@ -202,28 +222,6 @@ public class ParallaxActivity extends AppCompatActivity {
     }
 
     /**
-     * generate test data for recyclerview
-     */
-    private void generateTestData() {
-
-        CenterRepository.getInstance().getListOfItems().clear();
-
-        for (int i = 0; i < urls.length; i++) {
-
-            if (i <= 9) {
-                CenterRepository.getInstance().getListOfItems().add(new TestDataModel("Awesome Sky #" + i,
-                        "¯\\_(ツ)_/¯" + i, urls[i]));
-            } else if (i > 9 && i <= 13) {
-                CenterRepository.getInstance().getListOfItems().add(new TestDataModel("Tree # " + i,
-                        "(◕‿◕✿)" + i, urls[i]));
-            } else {
-                CenterRepository.getInstance().getListOfItems().add(new TestDataModel("Beautiful Mountain # " + i,
-                        "(▀̿Ĺ̯▀̿ ̿)" + i, urls[i]));
-            }
-        }
-    }
-
-    /**
      * Animate Shoot for Lollipop and Higher Android
      *
      * @param view
@@ -281,29 +279,5 @@ public class ParallaxActivity extends AppCompatActivity {
 
         shootAnimation.start();
     }
-
-    private String[] urls = {
-            //Add Sky
-            "http://wallpapercave.com/wp/0e12dgE.png",
-            "http://wallpapercave.com/wp/3I32MKI.jpg",
-            "http://wallpapercave.com/wp/251fACI.jpg",
-            "http://wallpapercave.com/wp/kKsNXp9.jpg",
-            "http://wallpapercave.com/wp/jGNTLTN.jpg",
-            "http://wallpapercave.com/wp/HfzLYZY.jpg",
-            "http://wallpapercave.com/wp/2l8fNqv.jpg",
-            "http://wallpapercave.com/wp/gF9n5Lk.jpg",
-            "http://wallpapercave.com/wp/cRHOcKE.jpg",
-            "http://wallpapercave.com/wp/KBk1YBX.jpg",
-            //Tree
-            "http://img03.deviantart.net/7245/i/2013/134/3/c/tree_2__png_with_transparency__by_bupaje-d65amxg.png",
-            "http://img04.deviantart.net/95e3/i/2013/136/e/a/tree_3__png_with_transparency__by_bupaje-d65gvf3.png",
-            "http://img07.deviantart.net/38e2/i/2013/135/b/2/tree_1__png_with_transparency__by_bupaje-d65ctod.png",
-            //Hills
-            "http://www.pngall.com/wp-content/uploads/2016/06/Mountain-PNG-Picture.png",
-            "http://www.pngall.com/wp-content/uploads/2016/06/Mountain-PNG-File.png",
-            "http://david-freed.com/wp-content/uploads/2014/04/Slider-Mountain-1440-wide-1.png",
-            "http://pre02.deviantart.net/0627/th/pre/f/2013/218/c/8/mountain_landscape_by_regus_ttef-d602k3h.png",
-            "http://www.pngall.com/wp-content/uploads/2016/06/Mountain-PNG-Image-180x180.png"
-    };
 
 }

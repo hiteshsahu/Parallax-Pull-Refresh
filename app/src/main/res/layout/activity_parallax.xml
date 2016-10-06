@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
-    android:id="@+id/parent"
     android:fitsSystemWindows="true">
 
-    <com.nirhart.parallaxscroll.views.ParallaxNestedScrollView
+    <com.hitesh.parallaxrefresh.widget.parallax.ParallaxNestedScrollView
         android:id="@+id/parallax_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             </android.support.design.widget.CoordinatorLayout>
 
         </LinearLayout>
-    </com.nirhart.parallaxscroll.views.ParallaxNestedScrollView>
+    </com.hitesh.parallaxrefresh.widget.parallax.ParallaxNestedScrollView>
 
     <!--Fab without icon will act as placeholder-->
     <android.support.design.widget.FloatingActionButton

@@ -1,13 +1,10 @@
-package me.everything.android.ui.overscroll.adapters;
+package com.hitesh.parallaxrefresh.widget.pullrefresh.adapters;
 
 import android.view.View;
-
-import me.everything.android.ui.overscroll.HorizontalOverScrollBounceEffectDecorator;
 
 /**
  * @author amitd
  *
- * @see HorizontalOverScrollBounceEffectDecorator
  */
 public interface IOverScrollDecoratorAdapter {
 

@@ -1,10 +1,10 @@
-package me.everything.android.ui.overscroll;
+package com.hitesh.parallaxrefresh.widget.pullrefresh;
 
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import me.everything.android.ui.overscroll.adapters.IOverScrollDecoratorAdapter;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.adapters.IOverScrollDecoratorAdapter;
 
 /**
  * A concrete implementation of {@link OverScrollBounceEffectDecoratorBase} for a vertical orientation.
@@ -12,44 +12,6 @@ import me.everything.android.ui.overscroll.adapters.IOverScrollDecoratorAdapter;
  * @author amit
  */
 public class VerticalOverScrollBounceEffectDecorator extends OverScrollBounceEffectDecoratorBase {
-
-    protected static class MotionAttributesVertical extends MotionAttributes {
-
-        public boolean init(View view, MotionEvent event) {
-
-            // We must have history available to calc the dx. Normally it's there - if it isn't temporarily,
-            // we declare the event 'invalid' and expect it in consequent events.
-            if (event.getHistorySize() == 0) {
-                return false;
-            }
-
-            // Allow for counter-orientation-direction operations (e.g. item swiping) to run fluently.
-            final float dy = event.getY(0) - event.getHistoricalY(0, 0);
-            final float dx = event.getX(0) - event.getHistoricalX(0, 0);
-            if (Math.abs(dx) > Math.abs(dy)) {
-                return false;
-            }
-
-            mAbsOffset = view.getTranslationY();
-            mDeltaOffset = dy;
-            mDir = mDeltaOffset > 0;
-
-            return true;
-        }
-    }
-
-    protected static class AnimationAttributesVertical extends AnimationAttributes {
-
-        public AnimationAttributesVertical() {
-            mProperty = View.TRANSLATION_Y;
-        }
-
-        @Override
-        protected void init(View view) {
-            mAbsOffset = view.getTranslationY();
-            mMaxOffset = view.getHeight();
-        }
-    }
 
     /**
      * C'tor, creating the effect with default arguments:
@@ -102,5 +64,43 @@ public class VerticalOverScrollBounceEffectDecorator extends OverScrollBounceEff
         view.setTranslationY(offset);
         Log.e("Yuck", "Translated Y " + offset);
         event.offsetLocation(offset - event.getY(0), 0f);
+    }
+
+    protected static class MotionAttributesVertical extends MotionAttributes {
+
+        public boolean init(View view, MotionEvent event) {
+
+            // We must have history available to calc the dx. Normally it's there - if it isn't temporarily,
+            // we declare the event 'invalid' and expect it in consequent events.
+            if (event.getHistorySize() == 0) {
+                return false;
+            }
+
+            // Allow for counter-orientation-direction operations (e.g. item swiping) to run fluently.
+            final float dy = event.getY(0) - event.getHistoricalY(0, 0);
+            final float dx = event.getX(0) - event.getHistoricalX(0, 0);
+            if (Math.abs(dx) > Math.abs(dy)) {
+                return false;
+            }
+
+            mAbsOffset = view.getTranslationY();
+            mDeltaOffset = dy;
+            mDir = mDeltaOffset > 0;
+
+            return true;
+        }
+    }
+
+    protected static class AnimationAttributesVertical extends AnimationAttributes {
+
+        public AnimationAttributesVertical() {
+            mProperty = View.TRANSLATION_Y;
+        }
+
+        @Override
+        protected void init(View view) {
+            mAbsOffset = view.getTranslationY();
+            mMaxOffset = view.getHeight();
+        }
     }
 }

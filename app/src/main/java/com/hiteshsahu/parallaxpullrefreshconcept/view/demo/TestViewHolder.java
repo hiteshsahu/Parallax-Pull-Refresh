@@ -1,10 +1,12 @@
-package com.hiteshsahu.parallaxpullrefreshconcept;
+package com.hiteshsahu.parallaxpullrefreshconcept.view.demo;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.hiteshsahu.parallaxpullrefreshconcept.R;
 
 
 public class TestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

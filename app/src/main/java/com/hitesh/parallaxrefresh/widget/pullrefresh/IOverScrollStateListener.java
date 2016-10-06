@@ -1,4 +1,4 @@
-package me.everything.android.ui.overscroll;
+package com.hitesh.parallaxrefresh.widget.pullrefresh;
 
 /**
  * A callback-listener enabling over-scroll effect clients to subscribe to effect state transitions.

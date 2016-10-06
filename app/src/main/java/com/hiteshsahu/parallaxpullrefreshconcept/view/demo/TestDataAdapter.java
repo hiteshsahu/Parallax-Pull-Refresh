@@ -1,4 +1,4 @@
-package com.hiteshsahu.parallaxpullrefreshconcept;
+package com.hiteshsahu.parallaxpullrefreshconcept.view.demo;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,8 +11,8 @@ import android.view.animation.AnimationUtils;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.hiteshsahu.parallaxpullrefreshconcept.data.CenterRepository;
-import com.hiteshsahu.parallaxpullrefreshconcept.data.TestDataModel;
+import com.hiteshsahu.parallaxpullrefreshconcept.R;
+import com.hiteshsahu.parallaxpullrefreshconcept.data.TestDataProvider;
 
 
 public class TestDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -20,6 +20,8 @@ public class TestDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     Context context;
 
     OnCardClickListner onCardClickListner;
+    // Allows to remember the last item shown on screen
+    private int lastPosition = -1;
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public TestDataAdapter() {
@@ -76,16 +78,12 @@ public class TestDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return CenterRepository.getInstance().getListOfItems().size();
+        return TestDataProvider.getInstance().getListOfItems().size();
     }
 
-
-    public TestDataModel getItem(int position) {
-        return CenterRepository.getInstance().getItemAt(position);
+    public TestDataProvider.TestDataModel getItem(int position) {
+        return TestDataProvider.getInstance().getItemAt(position);
     }
-
-    // Allows to remember the last item shown on screen
-    private int lastPosition = -1;
 
     /**
      * Here is the key method to apply the animation
@@ -99,13 +97,12 @@ public class TestDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
+    public void setOnCardClickListner(OnCardClickListner onCardClickListner) {
+        this.onCardClickListner = onCardClickListner;
+    }
 
     public interface OnCardClickListner {
         void OnCardClicked(View view, int position);
-    }
-
-    public void setOnCardClickListner(OnCardClickListner onCardClickListner) {
-        this.onCardClickListner = onCardClickListner;
     }
 
 }

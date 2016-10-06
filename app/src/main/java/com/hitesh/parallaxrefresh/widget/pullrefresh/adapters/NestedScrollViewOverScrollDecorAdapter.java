@@ -1,23 +1,18 @@
-package me.everything.android.ui.overscroll.adapters;
+package com.hitesh.parallaxrefresh.widget.pullrefresh.adapters;
 
 import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.ScrollView;
 
-import me.everything.android.ui.overscroll.HorizontalOverScrollBounceEffectDecorator;
-import me.everything.android.ui.overscroll.VerticalOverScrollBounceEffectDecorator;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.VerticalOverScrollBounceEffectDecorator;
 
 /**
  * An adapter that enables over-scrolling over a {@link ScrollView}.
  * <br/>Seeing that {@link ScrollView} only supports vertical scrolling, this adapter
  * should only be used with a {@link VerticalOverScrollBounceEffectDecorator}. For horizontal
- * over-scrolling, use {@link HorizontalScrollViewOverScrollDecorAdapter} in conjunction with
- * a {@link android.widget.HorizontalScrollView}.
+ * over-scrolling,
  *
- * @author amit
- *
- * @see HorizontalOverScrollBounceEffectDecorator
- * @see VerticalOverScrollBounceEffectDecorator
+ * @author hitesh
  */
 public class NestedScrollViewOverScrollDecorAdapter implements IOverScrollDecoratorAdapter {
 

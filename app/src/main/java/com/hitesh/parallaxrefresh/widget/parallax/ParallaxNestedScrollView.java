@@ -1,4 +1,4 @@
-package com.nirhart.parallaxscroll.views;
+package com.hitesh.parallaxrefresh.widget.parallax;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,24 +13,11 @@ import java.util.ArrayList;
 
 
 /**
+ * Nested scroll view with parallax effect for header
  * Created by Hitesh on 05-10-2016.
  */
 public class ParallaxNestedScrollView extends NestedScrollView {
 
-
-    public ParallaxNestedScrollView(Context context) {
-        super(context);
-    }
-
-    public ParallaxNestedScrollView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs);
-    }
-
-    public ParallaxNestedScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(context, attrs);
-    }
 
     private static final int DEFAULT_PARALLAX_VIEWS = 1;
     private static final float DEFAULT_INNER_PARALLAX_FACTOR = 1.9F;
@@ -41,8 +28,22 @@ public class ParallaxNestedScrollView extends NestedScrollView {
     private float parallaxFactor = DEFAULT_PARALLAX_FACTOR;
     private float alphaFactor = DEFAULT_ALPHA_FACTOR;
     private ArrayList<ParallaxedView> parallaxedViews = new ArrayList<ParallaxedView>();
+    public ParallaxNestedScrollView(Context context) {
+        super(context);
+    }
+    public ParallaxNestedScrollView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context, attrs);
+    }
+    public ParallaxNestedScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context, attrs);
+    }
 
-
+    /**
+     * @param context
+     * @param attrs
+     */
     protected void init(Context context, AttributeSet attrs) {
         TypedArray typeArray = context.obtainStyledAttributes(attrs, R.styleable.ParallaxScroll);
         this.parallaxFactor = typeArray.getFloat(R.styleable.ParallaxScroll_parallax_factor, DEFAULT_PARALLAX_FACTOR);

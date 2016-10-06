@@ -1,4 +1,4 @@
-package com.nirhart.parallaxscroll.views;
+package com.hitesh.parallaxrefresh.widget.parallax;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
@@ -17,13 +17,13 @@ public abstract class ParallaxedView {
 	protected int lastOffset;
 	protected List<Animation> animations;
 
-	abstract protected void translatePreICS(View view, float offset);
-	
 	public ParallaxedView(View view) {
 		this.lastOffset = 0;
 		this.animations = new ArrayList<Animation>();
 		this.view = new WeakReference<View>(view);
 	}
+	
+	abstract protected void translatePreICS(View view, float offset);
 
 	public boolean is(View v) {
 		return (v != null && view != null && view.get() != null && view.get().equals(v));
