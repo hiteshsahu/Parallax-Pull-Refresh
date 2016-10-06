@@ -68,6 +68,7 @@ public class ParallxRefreshWidget extends CoordinatorLayout {
         super(context, attrs);
         init(context);
     }
+
     public ParallxRefreshWidget(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
@@ -286,14 +287,14 @@ public class ParallxRefreshWidget extends CoordinatorLayout {
 
         //TODO refine motion
         path.moveTo(x + 0, y + 0);
-        path.quadTo(x + 0, y + 0, x + 1000, y - 500);
-        path.quadTo(x + 1000, y - 500, x - 300, y - 500);
+        path.quadTo(x + 0, y + 0, x + 2000, y - 1000);
+        path.quadTo(x + 2000, y - 1000, x + 1000, y - 500);
+        path.quadTo(x + 1000, y - 500, x - 300, y - 300);
         path.quadTo(x - 300, y - 500, x - 300, y - 200);
-        path.quadTo(x - 300, y - 500, droneLaunchCoordinates[0], droneLaunchCoordinates[1]);
-        ObjectAnimator objectAnimator =
-                null;
-
-        objectAnimator = ObjectAnimator.ofFloat(view, View.X,
+        path.quadTo(x - 300, y - 200, x - 300, droneLaunchCoordinates[1] - drone.getHeight());
+        path.quadTo(x - 300, droneLaunchCoordinates[1] - drone.getHeight(), droneLaunchCoordinates[0] + drone.getWidth() / 2, droneLaunchCoordinates[1] - drone.getHeight() / 2);
+        ObjectAnimator objectAnimator
+                = ObjectAnimator.ofFloat(view, View.X,
                 View.Y, path);
         objectAnimator.setDuration(3000);
         objectAnimator.start();
