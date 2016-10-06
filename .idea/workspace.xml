@@ -10,15 +10,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab1e8ab5-1efb-4006-af8d-d0d194417c95" name="Default" comment="Removed useless classes and optimized for performance">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/IOverScrollDecor.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/listeners/IOverScrollDecor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/IOverScrollState.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/listeners/IOverScrollState.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/IOverScrollStateListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/listeners/IOverScrollStateListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/IOverScrollUpdateListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/listeners/IOverScrollUpdateListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/ListenerStubs.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/listeners/ListenerStubs.java" />
+    <list default="true" id="ab1e8ab5-1efb-4006-af8d-d0d194417c95" name="Default" comment="Removed useless classes and optimized for performance rearrange packages">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/OverScrollBounceEffectDecoratorBase.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/OverScrollBounceEffectDecoratorBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/hiteshsahu/parallaxpullrefreshconcept/view/demo/ParallaxActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hiteshsahu/parallaxpullrefreshconcept/view/demo/ParallaxActivity.java" />
     </list>
     <ignored path="Parallax Pull Refresh Concept.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -124,7 +117,7 @@
       <file leaf-file-name="OverScrollBounceEffectDecoratorBase.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/OverScrollBounceEffectDecoratorBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40193704">
+            <state vertical-scroll-proportion="0.45479453">
               <caret line="410" column="0" selection-start-line="410" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -2818,12 +2811,18 @@
       <option name="project" value="LOCAL" />
       <updated>1475768165480</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Removed useless classes and optimized for performance rearrange packages">
+      <created>1475768246559</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1475768246559</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1040" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2831,9 +2830,9 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24744028" sideWeight="0.8214286" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24744028" sideWeight="0.8214286" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2900,7 +2899,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Removed useless classes and optimized for performance" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed useless classes and optimized for performance" />
+    <MESSAGE value="Removed useless classes and optimized for performance rearrange packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed useless classes and optimized for performance rearrange packages" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -3000,7 +3000,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="285" column="6" selection-start-line="263" selection-start-column="2" selection-end-line="285" selection-end-column="6" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3120,7 +3120,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hitesh/parallaxrefresh/widget/pullrefresh/OverScrollBounceEffectDecoratorBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40193704">
+        <state vertical-scroll-proportion="0.45479453">
           <caret line="410" column="0" selection-start-line="410" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
