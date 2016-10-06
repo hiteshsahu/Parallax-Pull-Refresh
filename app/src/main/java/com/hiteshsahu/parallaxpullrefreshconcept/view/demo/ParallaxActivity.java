@@ -20,12 +20,12 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.hitesh.parallaxrefresh.widget.parallax.ParallaxNestedScrollView;
-import com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollDecor;
-import com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollState;
-import com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollStateListener;
-import com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollUpdateListener;
 import com.hitesh.parallaxrefresh.widget.pullrefresh.VerticalOverScrollBounceEffectDecorator;
 import com.hitesh.parallaxrefresh.widget.pullrefresh.adapters.NestedScrollViewOverScrollDecorAdapter;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollDecor;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollState;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollStateListener;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollUpdateListener;
 import com.hiteshsahu.parallaxpullrefreshconcept.R;
 import com.hiteshsahu.parallaxpullrefreshconcept.data.TestDataProvider;
 

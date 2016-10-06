@@ -1,4 +1,4 @@
-package com.hitesh.parallaxrefresh.widget.pullrefresh;
+package com.hitesh.parallaxrefresh.widget.pullrefresh.listeners;
 
 /**
  * @author amit

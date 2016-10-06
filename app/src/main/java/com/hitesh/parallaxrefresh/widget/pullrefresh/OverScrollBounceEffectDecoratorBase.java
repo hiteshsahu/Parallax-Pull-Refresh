@@ -11,13 +11,17 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 
 import com.hitesh.parallaxrefresh.widget.pullrefresh.adapters.IOverScrollDecoratorAdapter;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollDecor;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollState;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollStateListener;
+import com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollUpdateListener;
 
-import static com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollState.STATE_BOUNCE_BACK;
-import static com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollState.STATE_DRAG_END_SIDE;
-import static com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollState.STATE_DRAG_START_SIDE;
-import static com.hitesh.parallaxrefresh.widget.pullrefresh.IOverScrollState.STATE_IDLE;
-import static com.hitesh.parallaxrefresh.widget.pullrefresh.ListenerStubs.OverScrollStateListenerStub;
-import static com.hitesh.parallaxrefresh.widget.pullrefresh.ListenerStubs.OverScrollUpdateListenerStub;
+import static com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollState.STATE_BOUNCE_BACK;
+import static com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollState.STATE_DRAG_END_SIDE;
+import static com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollState.STATE_DRAG_START_SIDE;
+import static com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.IOverScrollState.STATE_IDLE;
+import static com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.ListenerStubs.OverScrollStateListenerStub;
+import static com.hitesh.parallaxrefresh.widget.pullrefresh.listeners.ListenerStubs.OverScrollUpdateListenerStub;
 
 /**
  * A standalone view decorator adding over-scroll with a smooth bounce-back effect to (potentially) any view -

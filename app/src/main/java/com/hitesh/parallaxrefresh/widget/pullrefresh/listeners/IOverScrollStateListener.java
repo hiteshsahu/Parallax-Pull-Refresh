@@ -1,4 +1,4 @@
-package com.hitesh.parallaxrefresh.widget.pullrefresh;
+package com.hitesh.parallaxrefresh.widget.pullrefresh.listeners;
 
 /**
  * A callback-listener enabling over-scroll effect clients to subscribe to effect state transitions.
