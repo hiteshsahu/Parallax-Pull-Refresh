@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
+    android:id="@+id/parent"
     android:fitsSystemWindows="true">
 
     <com.nirhart.parallaxscroll.views.ParallaxNestedScrollView
@@ -63,13 +64,27 @@
         </LinearLayout>
     </com.nirhart.parallaxscroll.views.ParallaxNestedScrollView>
 
+    <!--Fab without icon will act as placeholder-->
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_anchor="@id/testData"
+        app:layout_anchorGravity="top|left" />
+
+    <!--Fab with icon but transparent bg will animate-->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
+        android:background="@android:color/transparent"
         android:src="@android:drawable/ic_menu_send"
+        app:backgroundTint="@android:color/transparent"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
         app:layout_anchor="@id/testData"
         app:layout_anchorGravity="top|left" />
+
 
 </android.support.design.widget.CoordinatorLayout>
