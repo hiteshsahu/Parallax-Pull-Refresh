@@ -30,7 +30,7 @@ import com.hiteshsahu.parallaxpullrefreshconcept.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ParallxRefreshWidget extends CoordinatorLayout {
+public class ParallaxRefreshWidget extends CoordinatorLayout {
 
     private static final double HORIZONTAL_DISPLACEMENT = 1000.0;
     private static final double VERTICAL_DISPLACEMENT = 150.0;
@@ -53,29 +53,28 @@ public class ParallxRefreshWidget extends CoordinatorLayout {
     @BindView(R.id.demo_recycle_view)
     RecyclerView recycler;
     private int[] defaultBackground = new int[3];
-    private String TAG = ParallxRefreshWidget.class.getSimpleName();
+    private String TAG = ParallaxRefreshWidget.class.getSimpleName();
     private int currentGfCount = 0;
     private GlideDrawableImageViewTarget imageViewTarget;
     private int[] droneLaunchCoordinates = new int[2];
 
-    public ParallxRefreshWidget(Context context) {
+    public ParallaxRefreshWidget(Context context) {
         super(context);
         init(context);
     }
 
-
-    public ParallxRefreshWidget(Context context, AttributeSet attrs) {
+    public ParallaxRefreshWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public ParallxRefreshWidget(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ParallaxRefreshWidget(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
     /**
-     * Fill nay type of data you want here
+     * Fill any type of data you want in this recyclerview
      *
      * @return
      */
@@ -287,12 +286,29 @@ public class ParallxRefreshWidget extends CoordinatorLayout {
 
         //TODO refine motion
         path.moveTo(x + 0, y + 0);
+
+        //fly to extream right
         path.quadTo(x + 0, y + 0, x + 2000, y - 1000);
+
+        //fly low
         path.quadTo(x + 2000, y - 1000, x + 1000, y - 500);
+
+
+        //rotate
+        drone.setRotation(180);
+
+        //come back and go left
         path.quadTo(x + 1000, y - 500, x - 300, y - 300);
+
+        //fly low
         path.quadTo(x - 300, y - 500, x - 300, y - 200);
+
+        //prepare comeback
         path.quadTo(x - 300, y - 200, x - 300, droneLaunchCoordinates[1] - drone.getHeight());
+
+        //come back to launch position
         path.quadTo(x - 300, droneLaunchCoordinates[1] - drone.getHeight(), droneLaunchCoordinates[0] + drone.getWidth() / 2, droneLaunchCoordinates[1] - drone.getHeight() / 2);
+
         ObjectAnimator objectAnimator
                 = ObjectAnimator.ofFloat(view, View.X,
                 View.Y, path);

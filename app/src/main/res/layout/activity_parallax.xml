@@ -6,7 +6,7 @@
     android:background="#000"
     android:fitsSystemWindows="true">
 
-    <com.hitesh.parallaxrefresh.widget.refreshwidget.ParallxRefreshWidget
+    <com.hitesh.parallaxrefresh.widget.refreshwidget.ParallaxRefreshWidget
         android:id="@+id/parallex_refresh_widget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

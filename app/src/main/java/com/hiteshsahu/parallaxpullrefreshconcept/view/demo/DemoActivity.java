@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.hitesh.parallaxrefresh.widget.refreshwidget.ParallxRefreshWidget;
+import com.hitesh.parallaxrefresh.widget.refreshwidget.ParallaxRefreshWidget;
 import com.hiteshsahu.parallaxpullrefreshconcept.R;
 import com.hiteshsahu.parallaxpullrefreshconcept.data.TestDataProvider;
 
@@ -21,7 +21,7 @@ public class DemoActivity extends AppCompatActivity {
     @BindView(R.id.demo_root)
     ViewGroup parentViewGroup;
     @BindView(R.id.parallex_refresh_widget)
-    ParallxRefreshWidget parallaxRefreshWidget;
+    ParallaxRefreshWidget parallaxRefreshWidget;
     private int currentGfCount = 0;
 
 
